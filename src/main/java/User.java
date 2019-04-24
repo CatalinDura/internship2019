@@ -28,6 +28,7 @@ public class User {
                         currentDataTime.getMonthValue(), currentDataTime.getDayOfMonth())))
                 .collect(Collectors.toList());
 
+
         //Salvam de asemenea si conturile care vor fi invalide peste un an
 
         List<Account> invalidAccountOverAYear=accounts.stream()
@@ -142,22 +143,23 @@ public class User {
         User x=new User(localDateTime);
 
         LocalDate date1=LocalDate.of(2020,5,23);
-        Account c1=new Silver(5000,date1);
+        Account c1=new Account(5000,date1,0.3,0.2,"Silver");
 
         LocalDate date2=LocalDate.of(2020,7,5);
-        Account c2=new Gold(700,date2);
+        Account c2=new Account(700,date2,0.6,0.4,"Gold");
 
         LocalDate date3=LocalDate.of(2020,3,15);
-        Account c3=new Platinum(300,date3);
+        Account c3=new Account(300,date3,0.9,0.5,"Platinum");
 
         x.addAccount(c1);
         x.addAccount(c2);
         x.addAccount(c3);
 
         x.redistributeMoney(x.getLista());
-        x.calculateInteresetOverAPeriod(39);
         x.getLista().forEach(System.out::println);
 
+        x.calculateInteresetOverAPeriod(39);
+        x.getLista().forEach(System.out::println);
     }
 
 }
